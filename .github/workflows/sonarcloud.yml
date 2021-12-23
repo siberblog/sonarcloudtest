@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - siberblog-patch-1
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
@@ -20,5 +21,5 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: Build the Docker image
         run: |
-          docker build . --file Dockerfile --tag siberblog/sonarqubetest:$(date +%s)
-          docker tag siberblog/sonarqubetest:$(date +%s) siberblog/sonarqubetest:latest
+          docker build . --file Dockerfile --tag siberblog/sonarqubetest:1
+          docker tag siberblog/sonarqubetest:1 siberblog/sonarqubetest:latest
