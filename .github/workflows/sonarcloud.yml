@@ -31,9 +31,7 @@ jobs:
       - name: Build the Docker image
         run: |
           docker build . --file Dockerfile --tag=siberblog/sonarqubetest:$(%s)
-          docker tag siberblog/sonarqubetest:$(%s) siberblog/sonarqubetest:latest
 
       - name: Docker Push
         run: |
           docker push siberblog/sonarqubetest:$(%s)
-          docker push siberblog/sonarqubetest:latest
