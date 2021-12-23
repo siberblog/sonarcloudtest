@@ -5,7 +5,7 @@ pipeline {
         APP_REPO_NAME= "clarusway-repo/todo-app"
     }
     stages {
-        stage('Build Docker Image') {
+        stage('Build Docker Image ') {
             steps {
                 sh 'docker build --force-rm -t "$ECR_REGISTRY/$APP_REPO_NAME:latest" .'
                 sh 'docker image ls' 
@@ -28,7 +28,7 @@ pipeline {
     }
     post {
         always {
-	echo "asdaasdasdasdsadadasdasdsads"    
+	echo "asdaasdasdasasd adsadadasdasdsads"    
     }
     }
 }
