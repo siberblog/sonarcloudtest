@@ -29,9 +29,14 @@ jobs:
           docker login -u $DOCKER_USER -p $DOCKER_PASS
 
       - name: Build the Docker image
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_RUN_NUMBER: ${{ github.run_number }}
         run: |
-          docker build . --file Dockerfile --tag=siberblog/sonarqubetest:$(%s)
+          echo ${{ github.run_id }}
+          run: echo ${{ github.run_number }}
+          docker build . --file Dockerfile --tag=siberblog/sonarqubetest:$GITHUB_RUN_ID
 
       - name: Docker Push
         run: |
-          docker push siberblog/sonarqubetest:$(%s)
+          docker push siberblog/sonarqubetest:$GITHUB_RUN_ID
