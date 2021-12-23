@@ -28,7 +28,7 @@ pipeline {
     }
     post {
         always {
-	echo "asdaasdasdasdsadadasdasdsads"    
+	echo "asdaasdasdasasd adsadadasdasdsads"    
     }
     }
 }
