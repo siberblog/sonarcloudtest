@@ -30,15 +30,12 @@ jobs:
 
       - name: Build the Docker image
         env:
-          GITHUB_RUN_ID: ${{ github.run_id }}
-          GITHUB_RUN_NUMBER: ${{ github.run_number }}
+          GITHUB_RUN_NUMBER: 
         run: |
-          echo "run_id 1 ${{ github.run_id }}"
-          echo $GITHUB_RUN_ID
-          echo "run_number 1 ${{ github.run_number }}"
+
           echo $GITHUB_RUN_NUMBER
-          docker build . --file Dockerfile --tag=siberblog/sonarqubetest:$GITHUB_RUN_ID
+          docker build . --file Dockerfile --tag=siberblog/sonarqubetest:${{ github.run_number }}
 
       - name: Docker Push
         run: |
-          docker push siberblog/sonarqubetest:$GITHUB_RUN_ID
+          docker push siberblog/sonarqubetest:$GITHUB_RUN_NUMBER
