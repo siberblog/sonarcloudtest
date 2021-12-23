@@ -32,10 +32,10 @@ jobs:
         env:
           GITHUB_RUN_NUMBER: 
         run: |
-
-          echo $GITHUB_RUN_NUMBER
           docker build . --file Dockerfile --tag=siberblog/sonarqubetest:${{ github.run_number }}
+          docker tag siberblog/sonarqubetest:$GITHUB_RUN_NUMBER siberblog/sonarqubetest:latest
 
       - name: Docker Push
         run: |
           docker push siberblog/sonarqubetest:$GITHUB_RUN_NUMBER
+          docker push siberblog/sonarqubetest:latest
