@@ -1,4 +1,4 @@
-name: Build
+name: SonarCloudAnalysis
 on:
   push:
     branches:
@@ -6,6 +6,7 @@ on:
       - siberblog-patch-1
   pull_request:
     types: [opened, synchronize, reopened]
+
 jobs:
   sonarcloud:
     name: SonarCloud  
@@ -20,22 +21,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-      - name: Docker login
-        env:
-          DOCKER_USER: ${{secrets.DOCKER_USERNAME}}
-          DOCKER_PASS: ${{secrets.DOCKER_PASSWORD}}
-        run: |
-          docker login -u $DOCKER_USER -p $DOCKER_PASS
-
-      - name: Build the Docker image
-        env:
-          GITHUB_RUN_NUMBER: 
-        run: |
-          docker build . --file Dockerfile --tag=siberblog/sonarqubetest:${{ github.run_number }}
-          docker tag siberblog/sonarqubetest:$GITHUB_RUN_NUMBER siberblog/sonarqubetest:latest
-
-      - name: Docker Push
-        run: |
-          docker push siberblog/sonarqubetest:$GITHUB_RUN_NUMBER
-          docker push siberblog/sonarqubetest:latest
