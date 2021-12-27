@@ -9,7 +9,7 @@ on:
 
 jobs:
   sonarcloud:
-    name: SonarCloud  
+    name: SonarCloudd
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -21,3 +21,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  sonarcloud2:
+    name: SonarCloudResults 
+    runs-on: SonarCloudd
+    steps:
+      - name: Docker login
+        env:
+          DOCKER_USER: ${{secrets.DOCKER_USERNAME}}
+          DOCKER_PASS: ${{secrets.DOCKER_PASSWORD}}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
+
