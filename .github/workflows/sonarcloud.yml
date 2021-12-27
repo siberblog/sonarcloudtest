@@ -23,14 +23,4 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           labels: this_label
-  sonarcloud2:
-    name: SonarCloudResults 
-    runs-on: this_label
-    steps:
-      - name: Docker login
-        env:
-          DOCKER_USER: ${{secrets.DOCKER_USERNAME}}
-          DOCKER_PASS: ${{secrets.DOCKER_PASSWORD}}
-        run: |
-          docker login -u $DOCKER_USER -p $DOCKER_PASS
 
