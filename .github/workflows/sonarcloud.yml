@@ -23,7 +23,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   sonarcloud2:
     name: SonarCloudResults 
-    runs-on: SonarCloudd
+    runs-on: sonarcloud
     steps:
       - name: Docker login
         env:
