@@ -24,7 +24,6 @@ jobs:
 
   sonarcloud2:
     runs-on: ubuntu-latest
-    needs: sonarcloud
     name: SonarCloudResults 
     steps:
       - name: Docker login
