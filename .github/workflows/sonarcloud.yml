@@ -29,7 +29,7 @@ jobs:
     steps:
       - name: Docker login
         env:
-          DOCKER_USER: ${{secrets.DOCKER_USERNAME}}
-          DOCKER_PASS: ${{secrets.DOCKER_PASSWORD}}
+          DOCKER_USER: ${{secrets.DOCKERHUB_USERNAME}}
+          DOCKER_PASS: ${{secrets.DOCKERHUB_PASSWORD}}
         run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASS 
