@@ -21,9 +21,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          labels: this_label
   sonarcloud2:
     name: SonarCloudResults 
-    runs-on: sonarcloud
+    runs-on: this_label
     steps:
       - name: Docker login
         env:
